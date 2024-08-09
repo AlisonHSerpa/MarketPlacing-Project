@@ -12,7 +12,7 @@ Equipe:
 -Raquel Anjos
 
 Professor:
-Igor Amaral
+Ygor Amaral
 
 Consultor:
-José Miguel
+Jose Miguel
