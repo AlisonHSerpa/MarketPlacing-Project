@@ -21,7 +21,7 @@ Este projeto é dedicado à disciplina de Projeto 1 do curso de Engenharia da Co
 ## 🧑‍🏫 Orientação
 
 - **Professor**: [Ygor Amaral](https://github.com/ygoramaral)
-- **Consultor**: [Jose Migue](http://github.com/JMiguelsilva2003)
+- **Consultor**: [José Miguel](http://github.com/JMiguelsilva2003)
 
 ## 🚀 Tecnologias Utilizadas
 
