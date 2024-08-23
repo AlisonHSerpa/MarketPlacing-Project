@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@media (min-width: 300px) and (max-width: 920px){
+    .item-menu {
+        display: none;
+        background-color: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        flex-direction: column;
+        padding: 10px;
+        position: absolute;
+        top: 115px;
+        right: 100px;
+        width: 200px;
+        transition: all 0.3 ease-in-out;
+    }
+    /*fazer as referencias de D M A P e o hamburguer*/
+}
