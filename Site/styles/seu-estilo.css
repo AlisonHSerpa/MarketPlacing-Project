@@ -1,2 +1,244 @@
-/* btn eh a referencia para botao*/
-/* diferenteeh um botao so que tem aquelas coisas a mais que comentamos*/
+/* necessita de atenção ao tamanho das imagens e forma de referencia*/
+
+@charset "utf-8";
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0%;
+    font-size: 1em;
+}
+
+html, body{
+    height: 100vh;
+    background-color: #121c24;
+}
+
+header {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#partes > p {
+    /* pequeno espacamento entre os links*/
+    margin-left: 10px;
+}
+
+nav menu{
+    margin: 3px;
+}
+
+nav > menu > a{
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    color: white;
+    /*espacamento entre os links da direita*/
+    margin-left: 10px;
+}
+
+nav > menu > p{
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    color: white;
+    /* mantem o tutilo do site a esquerda*/
+    margin-right: auto;
+}
+
+.logo {
+    height: 80px;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+#perfil-foto {
+    height: 80px;
+    margin-left: 10px;
+    margin-right: auto;
+    border-radius: 50%;
+    /* animacao suave */
+    transition: transform 0.3s ease-in-out;
+}
+
+nav > menu > a.item-menu:hover{
+    background-color: white;
+    color: black;
+}
+
+.perfil-menu {
+    display: nome;
+    position: absolute;
+    top: 120px;
+    right: 10px;
+    background-color: #121c24;
+    border-radius: 8px;
+    box-shadow: 0.4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition-duration: 1.0s;
+}
+
+perfil-menu a{
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid #333;
+    transition: background-color 0.3s ease;
+}
+
+.perfil-menu a:hover {
+    background-color: #1c2735;
+}
+
+.perfil-menu a:last-child{
+    border-bottom: none;
+}
+
+i#burguer{
+    display: none;
+}
+
+.divisor {
+    border: 0;
+    height: 1px;
+    background-color: white;
+    margin: 0 20px;
+    margin-bottom: 64px;
+    transition-duration: 1.0s;
+}
+
+section{
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    line-height: 2em;
+    padding-left: 30px;
+    font-size: 3.5vw;
+}
+
+section > p {
+    padding-bottom: 2em;
+}
+
+section > a{
+    color: black !important;
+}
+
+section.texto{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+section.texto > h1 {
+    text-align: center;
+}
+
+section.texto > a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+section.imagem{
+    background-color: rgba(51, 51, 51);
+    color: white;
+    box-shadow: inset 6px 13px 0px rgba(0, 0, 0, 0.473);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh;
+    margin-left: 6%;
+    margin-right: 6%;
+    border-radius: 16px;
+}
+
+section.imagem > p{
+    display: inline-block;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.514);
+    margin: 0%;
+    margin-left: -29px;
+    margin-top: 50px;
+    text-shadow: 1px 1px 0px black;
+}
+
+section#img01{
+    background-image: url("C:\Users\aliso\Documents\Selfcare\Projeto-1\Site\paginas\imagens\foto1.jpg");
+    background-position: right center;
+}
+.btn {
+    display: inline-block;
+    margin-top: 36px;
+    padding: 10px 20px;
+    background-color: #f57b02;
+    text-decoration: none;
+    font-size: 1.0em;
+    font-weight: bold;
+    border-radius: 32px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.diferente {
+    display: inline-block;
+    margin-top: 36px;
+    padding: 10px 20px;
+    background-color: #29384c;
+    color: white !important;
+    text-decoration: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 32px;
+    text-align: center;
+    transition: backgorund-color 0.3s ease;
+}
+
+.diferente:hover {
+    background-color: #1c2735;
+}
+
+.btn:hover{
+    background-color: #1c2735;
+}
+
+.texto > p {
+    font-size: 0.8em;
+    color: white;
+}
+
+section.texto > img {
+    display: inline-block;
+    margin: 10px;
+    width: 30%;
+    max-width: auto;
+    height: auto;
+}
+
+footer{
+    background-color: black;
+    color: white !important;
+    text-align: center;
+    padding: 10px;
+}
+
