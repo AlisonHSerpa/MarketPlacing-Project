@@ -58,8 +58,8 @@ content="width=device-width, initial-scale=1.0">
             <p><a href="" target="_blank">Lawrence Lopes</a></p>
             <p><a href="" target="_blank">Mariana Chacon</a></p>
             <p><a href="" target="_blank">Raquel Anjos</a></p>
-        </footer>
-    </body>
+       </footer>
+     </body>
     </html>
-        </form>        
-    </main>
+   </form>        
+  </main>

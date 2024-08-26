@@ -16,7 +16,7 @@ Este projeto é dedicado à disciplina de Projeto 1 do curso de Engenharia da Co
 - **[Júlio César](https://github.com/jcfern87)** - Desenvolvedor Backend e Frontend
 - **[Lawrence Lopes](https://github.com/lawrst)** - Designer de Interface e Desenvolvedor Frontend
 - **[Mariana de Holanda](https://github.com/mhchacon)** - Designer de Interface e Desenvolvedor Frontend
-- **[Raquel Anjos](https://github.com/raqu-ajm)** - Designer de Interface e Desenvolvedor Frontend
+- **[Rauqel Anjos](https://github.com/raqu-ajm)** - Designer de Interface e Desenvolvedor Frontend
 
 ## 🧑‍🏫 Orientação
 
