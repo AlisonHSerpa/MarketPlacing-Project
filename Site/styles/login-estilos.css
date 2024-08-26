@@ -1,0 +1,161 @@
+@charset "utf-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+}
+
+html, body {
+    height: 100vh;
+    background-color: #121C24;
+}
+
+header {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ca6500;
+}
+
+header > h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 2em;
+    color: white;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+nav menu {
+    margin: 3px;
+}
+
+nav > menu > a {
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    color: white;
+    margin-left: 10px; /*Espaçamento entre os links à direita */
+}
+
+nav > menu > p {
+    padding: 8px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    color: white;
+    margin-right: auto; /* Mantém o título do site à esquerda */
+}
+
+.logo {
+    height: 80px; /* Ajuste a altura conforme o necessário */
+    margin-left: 10px; /* Pequeno espaçamento da borda esquerda */
+    margin-right: auto; /* Empurra os links para a direita */
+}
+
+nav > menu > a.menu:hover {
+    background-color: white;
+    color: black;
+}
+
+.divisor {
+    border: 0;
+    height: 1px;
+    background-color: white;
+    margin: 0 20px; /* Adicione um espaçamento horizontal se desejar */
+    margin-bottom: 64px; /* Afasta os conteúdos abaixo */
+    transition-duration: 1.0s;
+}
+
+main {
+    margin-bottom: 63px;
+    margin: 10px;
+    margin-right: 16px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column; /* Alinha todos os elementos em uma única coluna */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121C24;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.campo {
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+    width: 100%; /* Garante que os campos ocupem toda a largura disponível */ 
+}
+
+.campo label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #29384C;
+    color: white;
+    width: 100%; /* Garante que o input ocupe toda a largura disponível */
+}
+
+.campo input:focus {
+    border-color: #ca6500;
+    outline: none;
+}
+
+.btn{
+    margin: 0px;
+}
+
+.btn, .btn-voltar {
+    padding: 10px;
+    background-color: #ca6500;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 15px; /* Espaçamento superior para os botões */
+    width: 100%; /* Garante que os botões ocupem toda a largura disponível */
+    max-width: 100%; /* Garante que não ultrapasse a largura do contêiner */
+}
+
+.btn:hover {
+    background-color: #a04d00;
+}
+
+.btn-voltar {
+    background-color: #29384C;
+}
+
+.btn-voltar:hover {
+    background-color: #1c2735;
+}
+
+footer {
+    margin-top: 68px;
+    bottom: 0;
+    background-color: black;
+    color: white !important;
+    text-align: center;
+    padding: 10px;
+}
