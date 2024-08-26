@@ -66,7 +66,7 @@ if ($stmt->num_rows > 0) {
     // Converte os valores de $parametros em uma lista de referências para bind_param
     $stmt->bind_param("is" . str_repeat("i", 18), ...$parametros);
 
-    if ($stmt->excute()) {
+    if ($stmt->execute()) {
         // Redireciona para painel.php após inserir as respostas
         header("Location: painel.php");
         exit();
