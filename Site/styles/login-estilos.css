@@ -46,7 +46,7 @@ nav > menu > a {
     font-weight: bold;
     transition-duration: 0.5s;
     color: white;
-    margin-left: 10px; /*Espaçamento entre os links à direita */
+    margin-left: 10px; /* Espaçamento entre os links à direita */
 }
 
 nav > menu > p {
