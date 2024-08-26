@@ -76,24 +76,34 @@ nav > menu > p{
     transition: transform 0.3s ease-in-out;
 }
 
+body > main > section.texto > img.info-imagem {
+    width: 1000px;
+    height: 500px;
+}
+
+body > main > section.texto > img.info-imagem {
+    width: 1000px;
+    height: 500px;
+}
+
 nav > menu > a.item-menu:hover{
     background-color: white;
     color: black;
 }
 
 .perfil-menu {
-    display: nome;
+    display: none; /* Menu inicialmente escondido */
     position: absolute;
-    top: 120px;
-    right: 10px;
-    background-color: #121c24;
+    top: 120px; /* Ajuste conforme a altura do seu header */
+    right: 10px; /* Alinha à direita */
+    background-color: #121C24;
     border-radius: 8px;
-    box-shadow: 0.4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition-duration: 1.0s;
 }
 
-perfil-menu a{
+.perfil-menu a{
     display: block;
     padding: 10px 20px;
     text-decoration: none;
@@ -146,6 +156,12 @@ section.texto{
 
 section.texto > h1 {
     text-align: center;
+    color: white !important;
+}
+
+section.texto > h2 {
+    text-align: center;
+    color: white !important;
 }
 
 section.texto > a{
@@ -184,7 +200,7 @@ section.imagem > p{
 }
 
 section#img01{
-    background-image: url("C:\Users\aliso\Documents\Selfcare\Projeto-1\Site\paginas\imagens\foto1.jpg");
+    background-image: url("../paginas/imagens/foto1.jpg");
     background-position: right center;
 }
 .btn {
@@ -241,4 +257,3 @@ footer{
     text-align: center;
     padding: 10px;
 }
-

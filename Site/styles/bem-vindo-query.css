@@ -13,5 +13,46 @@
         width: 200px;
         transition: all 0.3 ease-in-out;
     }
-    /*fazer as referencias de D M A P e o hamburguer*/
+
+    #D {
+        margin: 0px;
+    }
+
+    #M{
+        margin: 50px;
+    }
+
+    #A{
+        margin: 100px;
+    }
+
+    #P{
+        margin: 150px;
+    }
+
+    .menu.show-menu {
+        display: flex;
+    }
+
+    .item-menu:hover{
+        background-color: #1c2735;
+    }
+
+    i#burguer{
+        display: block;
+        width: 45px;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1100;
+        color: rbg(255, 255, 2555);
+    }
+
+    i#burguer:hover{
+        background-color: white;
+        color: black;
+    }
+}
+/*esse eh o do descktop*/
+@media (min-width: 920px) and (max-width: 1200px){
+
 }
