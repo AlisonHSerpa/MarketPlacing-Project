@@ -50,14 +50,10 @@ content="width=device-width, initial-scale=1.0">
         </form>
         </main>
 
-        <!-- creditos -->
         <footer>
-            <p>Site desenvolvivo por</p>
-            <p><a href=""target="_blank">Alison Serpa</a></p>
-            <p><a href="" target="_blank">Júlio Cesar</a></p>
-            <p><a href="" target="_blank">Lawrence Lopes</a></p>
-            <p><a href="" target="_blank">Mariana Chacon</a></p>
-            <p><a href="" target="_blank">Raquel Anjos</a></p>
+            <p>Site Desenvolvido por:</p>
+            <p><a href=""target="_blank">Júlio César Alves Fernandes</a></p>
+            <p><a href=""target="_blank">Alison Hentique de lima Serpa</a></p>
         </footer>
     </body>
     </html>
