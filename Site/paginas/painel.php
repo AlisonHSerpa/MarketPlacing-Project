@@ -10,11 +10,21 @@ if(isset($_SESSION['id'])) {
 
   // Consulta SQL para buscar as informações do usuário pelo ID
   $sql_code = "SELECT * FROM usuarios WHERE id = '$id_usuario'";
+  $sql_query = $mysqli->query($sql_code) or die("Falha na execução  do código SQL: " . $mysqli->error);
+
+  // Verifica se a consulta retornou algum resultado
+  if($sql_query->num_rows == 1) {
+    $usuario = $sql_query->fetch_assoc();
+  } else {
+    echo "Erro: Usuário não encontrado.";
+    exit();
+  }
+
+} else {
+  header("Location: login.php"); //Redireciona para a página de login se não estiver logado
+  exit();
 }
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -54,28 +64,30 @@ if(isset($_SESSION['id'])) {
         <section id="imagem-perfil">
             <img src="Site/paginas/imagens/foto2.jpg" alt="perfil" />
             <div>
-                <h1></h1>
-                <p></p>
+                <h1><?php echo htmlspecialchars($usuario['nome_usuario']); ?></h1>
+                <p><?php echo htmlspecialchars($usuario['email']); ?></p>
             </div>
         </section>
 
         <!-- Seção de informações -->
         <section id="informacoes">
             <h2>Email:</h2>
-            <p></p>
+            <p><?php echo htmlspecialchars($usuario['email']); ?></p>
             <h2>CPF:</h2>
-            <p></p>
+            <p><?php echo htmlspecialchars($usuario['cpf']); ?></p>
             <h2>Telefone:</h2>
-            <p></p>
-            <h2>Senha:</h2>
-            <p>****</p>
-            <a href="" class="mudar-senha">Alterar Senha</a>
+            <p><?php echo htmlspecialchars($usuario['telefone']); ?></p>
+            <div class="senha-alterar">
+                <h2>Senha:</h2>
+                <p>****</p>
+            </div>
+            <button class="btn" href="nova-senha.php">Alterar senha</button>
         </section>
 
         <section id="formulario">
             <p>Formulário</p>
             <button class="btn-simbolo">
-                <img src="Site/paginas/imagens/símbolo.png" alt="Símbolo" />
+                <img src="Site/paginas/imagens/símbolo.png" alt="Símbolo" width="50" height="50" />
             </button>
         </section>
     </main>
@@ -89,6 +101,8 @@ if(isset($_SESSION['id'])) {
         <p><a href="" target="_blank">Mariana Chacon</a></p>
         <p><a href="" target="_blank">Raquel Anjos</a></p>
     </footer>
+
+    <script src="../scripts/seu-script.js"></script>
 </body>
 
 </html>
