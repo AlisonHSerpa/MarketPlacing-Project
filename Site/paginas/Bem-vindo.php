@@ -31,7 +31,7 @@ if (!isset($_SESSION)) {
     </header>
 
     <div id="perfil-menu" class="perfil-menu">
-        <a href="login.php">Login</a>
+        <a href="tela_login.php">Login</a>
         <a href="cadastro.php">Cadastro</a>
     </div>
 
