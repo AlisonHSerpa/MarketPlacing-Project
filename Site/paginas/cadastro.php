@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../styles/cadastro-estilos.css">
     <link rel="stylesheet" href="../styles/cadastro-media-query.css">
 </head>
+
 <body>
     <header>
         <nav class="nav">
@@ -17,7 +19,7 @@
         </nav>
         <h1>Sign Up</h1>
     </header>
-    
+
     <hr class="divisor">
 
     <main>
@@ -48,13 +50,14 @@
         </form>
     </main>
 
-        <footer>
-            <p>Site desenvolvivo por</p>
-            <p><a href=""target="_blank">Alison Serpa</a></p>
-            <p><a href="" target="_blank">Júlio Cesar</a></p>
-            <p><a href="" target="_blank">Lawrence Lopes</a></p>
-            <p><a href="" target="_blank">Mariana Chacon</a></p>
-            <p><a href="" target="_blank">Raquel Anjos</a></p>
-        </footer>
+    <footer>
+        <p>Site desenvolvivo por</p>
+        <p><a href="" target="_blank">Alison Serpa</a></p>
+        <p><a href="" target="_blank">Júlio Cesar</a></p>
+        <p><a href="" target="_blank">Lawrence Lopes</a></p>
+        <p><a href="" target="_blank">Mariana Chacon</a></p>
+        <p><a href="" target="_blank">Raquel Anjos</a></p>
+    </footer>
 </body>
+
 </html>
