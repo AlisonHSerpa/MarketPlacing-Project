@@ -1,28 +1,27 @@
-<?php 
+<?php
 session_start();
-// Vai proteger a página e verificar se o usuário está logado
-// Vai incluir a conexão com o banco de dados
+include('protect.php');  // Protege a página, verifica se o usuário está logado
+include('conexao.php');  // Inclui a conexão com o banco de dados
 
-// Função que verifica se o usuário está logado
+// Verifica se o usuário está logado
 if(isset($_SESSION['id'])) {
-  // Obtem o ID do usuário da sessão
-  $id_usuario = $_SESSION['id'];
-
-  // Consulta SQL para buscar as informações do usuário pelo ID
-  $sql_code = "SELECT * FROM usuarios WHERE id = '$id_usuario'";
-  $sql_query = $mysqli->query($sql_code) or die("Falha na execução  do código SQL: " . $mysqli->error);
-
-  // Verifica se a consulta retornou algum resultado
-  if($sql_query->num_rows == 1) {
-    $usuario = $sql_query->fetch_assoc();
-  } else {
-    echo "Erro: Usuário não encontrado.";
-    exit();
-  }
-
+    // Obtém o ID do usuário da sessão
+    $id_usuario = $_SESSION['id'];
+    
+    // Consulta SQL para buscar as informações do usuário pelo ID
+    $sql_code = "SELECT * FROM usuarios WHERE id = '$id_usuario'";
+    $sql_query = $mysqli->query($sql_code) or die("Falha na execução do código SQL: " . $mysqli->error);
+    
+    // Verifica se a consulta retornou algum resultado
+    if($sql_query->num_rows == 1) {
+        $usuario = $sql_query->fetch_assoc();
+    } else {
+        echo "Erro: Usuário não encontrado.";
+        exit();
+    }
 } else {
-  header("Location: login.php"); //Redireciona para a página de login se não estiver logado
-  exit();
+    header("Location: login.php"); // Redireciona para a página de login se não estiver logado
+    exit();
 }
 ?>
 <!DOCTYPE html>

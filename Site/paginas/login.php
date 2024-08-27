@@ -50,7 +50,7 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
     <hr class="divisor">
 
     <main>
-        <form action="login.php" method="post" autocomplete="on" class="formulario">
+        <form action="tela_login.php" method="post" autocomplete="on" class="formulario">
             <div class="campo">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
