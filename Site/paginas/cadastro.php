@@ -2,31 +2,29 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel ="shortcut icon "href="imagens/
-    lcon_full-teste.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/
-    cadastro-estilos.css">
-    <link rel="stylesheet" href="../styles/ cadastro-media-query.css">
+    <link rel="shortcut icon" href="imagens/Icon_full-teste.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../styles/cadastro-estilos.css">
+    <link rel="stylesheet" href="../styles/cadastro-media-query.css">
 </head>
-<body
+<body>
     <header>
         <nav class="nav">
-        <menu id="partes">
-        <img src ="imagens/icon.png" alt="Logo do site" class="logo">
-        </menu>
+            <menu id="partes">
+                <img src="imagens/icon.png" alt="Logo do Site" class="logo">
+            </menu>
         </nav>
         <h1>Sign Up</h1>
     </header>
-
+    
     <hr class="divisor">
 
     <main>
-        <form action="processa_cadastro.php" method="post" class="formularios">
+
+        <form action="processa_cadastro.php" method="post" class="formulario">
             <div class="campo">
-                <label for = "nome">Nome de Usuário:</label>
+                <label for="nome">Nome de Usuário:</label>
                 <input type="text" id="nome" name="nome" required>
             </div>
             <div class="campo">
@@ -48,9 +46,8 @@ content="width=device-width, initial-scale=1.0">
             <button type="submit" class="btn">Enviar</button>
             <a href="Bem-vindo.php" class="btn-voltar">Voltar</a>
         </form>
-        </main>
+    </main>
 
-        <!-- creditos -->
         <footer>
             <p>Site desenvolvivo por</p>
             <p><a href=""target="_blank">Alison Serpa</a></p>
@@ -58,8 +55,6 @@ content="width=device-width, initial-scale=1.0">
             <p><a href="" target="_blank">Lawrence Lopes</a></p>
             <p><a href="" target="_blank">Mariana Chacon</a></p>
             <p><a href="" target="_blank">Raquel Anjos</a></p>
-       </footer>
-     </body>
-    </html>
-   </form>        
-  </main>
+        </footer>
+</body>
+</html>

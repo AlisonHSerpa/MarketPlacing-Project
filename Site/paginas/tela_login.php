@@ -1,7 +1,8 @@
 <?php
-include"conexao.php";
+include('conexao.php');
 
 if(isset($_POST['email']) && isset($_POST['senha'])) {
+
     $email = $mysqli->real_escape_string($_POST['email']);
     $senha = $mysqli->real_escape_string($_POST['senha']);
 
@@ -28,15 +29,14 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
 }
 ?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
-    <link rel="shortcut icon" href="imagens/icon_full-teste.icon" type="image/x-icon">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="../styles/login-estilos.css">
+    <link rel="shortcut icon" href="imagens/icon_full-teste.ico" type="image/x-icon">
 </head>
-
 <body>
     <header>
         <nav class="nav">
@@ -46,14 +46,14 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
         </nav>
         <h1>Login</h1>
     </header>
-
+    
     <hr class="divisor">
 
     <main>
         <form action="login.php" method="post" autocomplete="on" class="formulario">
             <div class="campo">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required></required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="campo">
                 <label for="senha">Senha:</label>
@@ -62,16 +62,15 @@ if(isset($_POST['email']) && isset($_POST['senha'])) {
             <button type="submit" class="btn">Entrar</button>
             <a href="Bem-vindo.php" class="btn-voltar">Voltar</a>
         </form>
-        <main>
+    </main>
 
-            <footer>
-                <p>Site Desenvolvido por:</p>
-                <p><a href="" target="_blank">Júlio César Alves Fernandes</a></p>
-                <p><a href="" target="_blank">Alison Henrique de Lima Serpa</a></p>
-                <p><a href="" target="_blank">Lawrence Lopes Gomes Silva</a></p>
-                <p><a href="" target="_blank">Mariana Chacon de Holanda Santos</a></p>
-                <p><a href="" target="_blank">Raquel Anjos</a></p>
-            </footer>
+        <footer>
+            <p>Site desenvolvivo por</p>
+            <p><a href=""target="_blank">Alison Serpa</a></p>
+            <p><a href="" target="_blank">Júlio Cesar</a></p>
+            <p><a href="" target="_blank">Lawrence Lopes</a></p>
+            <p><a href="" target="_blank">Mariana Chacon</a></p>
+            <p><a href="" target="_blank">Raquel Anjos</a></p>
+        </footer>
 </body>
-
 </html>
