@@ -47,3 +47,381 @@ nav > menu > a {
   color: white;
   margin-left: 10px;
 }
+
+nav > menu > p {
+  padding: 8px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition-duration: 0.5s;
+  color: white;
+  margin-right: auto;
+}
+
+.logo,
+#perfil-foto {
+  height: 80px;
+  margin-left: 10px;
+  margin-right: auto;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+#perfil-foto:hover {
+  cursor: pointer;
+  background-color: #121c24 !important;
+  transform: scale(1.1);
+}
+
+nav > menu > a.item-menu:hover {
+  background-color: white;
+  color: black;
+}
+
+.perfil-menu {
+  display: none;
+  position: absolute;
+  top: 120px;
+  right: 10px;
+  background-color: #121c24;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition-duration: 1s;
+}
+
+.perfil-menu {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: white;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.3s ease;
+}
+
+.perfil-menu a:hover {
+  background-color: #1c2735;
+}
+
+.perfil-menu a:last-child {
+  border-bottom: none;
+}
+
+i#burguer {
+  display: none;
+}
+
+.divisor {
+  border: 0;
+  height: 1px;
+  background-color: white;
+  margin: 0 20px; /* Adicione um espaçamento horizontal se desejar */
+  margin-bottom: 24px; /* Afastar os conteúdos abaixo */
+  transition-duration: 1s;
+}
+
+/* Main Content Styles */
+
+form#searchForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form#searchForm campo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form#searchForm label,
+form#searchForm input,
+form#searchForm select {
+  width: 100%; /* Deixar os campos ocuparem toda a largura disponível*/
+  max-width: 400px;
+}
+
+section {
+  margin-left: 20px;
+  padding: 4px;
+  line-height: 2em;
+  padding-left: 30px;
+  font-size: 2.5vw;
+}
+
+section > p {
+  padding-bottom: 1em;
+}
+
+section.texto {
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+section.texto > h1 {
+  text-align: center;
+}
+
+section.texto > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+section.imagem {
+  background-color: rgba(51, 51, 51);
+  color: white;
+  box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.473);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 50vh;
+  margin-left: 6%;
+  margin-right: 6%;
+  border-radius: 16px;
+}
+
+section.imagem > p {
+  display: inline-block;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.514);
+  margin: 0%;
+  margin-left: -29px;
+  margin-top: 50px;
+  text-shadow: 1px 1px 0px black;
+}
+
+section#img01 {
+  background-image: url("../paginas/imagens/foto1.jpg");
+  background-position: right center;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 10px 20px;
+  background-color: #f57b02;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 32px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.diferente {
+  display: inline-block;
+  margin-top: 36px;
+  padding: 10px 20px;
+  background-color: #29384c;
+  color: white !important;
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: bold;
+  border-radius: 32px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.diferente:hover {
+  background-color: #1c2735;
+}
+
+.btn:hover {
+  background-color: #ca6500;
+}
+
+.texto > h1 {
+  color: white;
+  font-size: 1, 5em;
+}
+
+.texto > h2 {
+  color: #ca6500;
+  font-size: 0.8em;
+}
+
+.texto > p {
+  font-size: 0.8em;
+  line-height: 1;
+  color: white;
+}
+
+.texto > button#localizacao {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+section.texto > img {
+  display: inline-block;
+  margin: 10px;
+  width: 20%;
+  max-width: 2500px;
+  height: auto;
+}
+
+section.informacoes > p {
+  font-size: 20px;
+  line-height: 0.9;
+  color: white;
+}
+
+section.informacoes > p > span {
+  color: #ca6500;
+}
+
+/* Professional Section Styles */
+#profissionais {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; caso queira centralizar */
+  margin-left: 30px;
+}
+
+.profissional {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.profissional img {
+  width: 400px;
+  height: 400px;
+  border-radius: 8%;
+  margin-right: 20px;
+}
+
+.informacoes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.informacoes p {
+  margin: 5px 0;
+}
+
+#navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#navigation button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+}
+
+/* Footer Styles */
+footer {
+  background-color: black;
+  color: white !important;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Detalhes */
+
+/* Estilo geral do formulário */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 8px auto;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo dos rótulos */
+
+.campo label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Estilo dos campos de entrada */
+.campo input[type="text"],
+.campo select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #29384c;
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* Efeito ao focar nos campos */
+.campo input[type="text"]:focus,
+.campo select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo dos botões */
+
+.campo .btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.campo .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Centralizar o botão "Sua localização" */
+
+#localizacao {
+  display: block;
+  margin: 20px auto;
+}
+
+/* Centralizar o texto do <h2> */
+.texto h2 {
+  text-align: center;
+}
+
+/* Manter o <h1> em uma única linha e centralizar */
+.texto h1 {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Centralizar o botão "Sou profissional" */
+button.btn {
+  display: block;
+  margin: 20px auto;
+}
+
+#verMais {
+  margin-top: -20px;
+  margin-bottom: 100px;
+}
+
+#especial {
+  display: flex;
+  justify-content: center;
+}
