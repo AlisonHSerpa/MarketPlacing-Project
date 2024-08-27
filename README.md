@@ -79,15 +79,6 @@ O projeto está sendo desenvolvido utilizando as seguintes tecnologias:
 2. *Inicie um novo projeto com o Composer*: No terminal, navegue até o diretório do projeto e execute o comando:
    bash
    composer init
-	
-### Passo 5: Instalar o banco de dados SQL
-1. *crie uma tabela para o banco de dados*:
-   <br> -id
-   <br> -nome_usuario
-   <br> -email
-   <br> -senha_hash
-   <br> -cpf
-   <br> -telefone
 
 ## 📄 Licença
 
