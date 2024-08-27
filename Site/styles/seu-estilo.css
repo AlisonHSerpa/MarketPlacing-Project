@@ -1,17 +1,15 @@
-/* necessita de atenção ao tamanho das imagens e forma de referencia*/
-
 @charset "utf-8";
 
 *{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 0%;
+    padding: 0;
     font-size: 1em;
 }
 
 html, body{
     height: 100vh;
-    background-color: #121c24;
+    background-color: #121C24;
 }
 
 header {
@@ -30,9 +28,19 @@ header {
     width: 100%;
 }
 
+#partes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 #partes > p {
-    /* pequeno espacamento entre os links*/
-    margin-left: 10px;
+    margin-left: 10px; /* Pequeno espaçamento do lado esquerdo */
+}
+
+#partes > a {
+    margin-right: 10px; /* Pequeno espaçamento entre os links */
 }
 
 nav menu{
@@ -46,8 +54,7 @@ nav > menu > a{
     font-weight: bold;
     transition-duration: 0.5s;
     color: white;
-    /*espacamento entre os links da direita*/
-    margin-left: 10px;
+    margin-left: 10px; /* Espaçamento entre os links à direita */
 }
 
 nav > menu > p{
@@ -57,33 +64,27 @@ nav > menu > p{
     font-weight: bold;
     transition-duration: 0.5s;
     color: white;
-    /* mantem o tutilo do site a esquerda*/
-    margin-right: auto;
+    margin-right: auto; /* Mantém o título do site à esquerda */
 }
 
 .logo {
-    height: 80px;
-    margin-left: 10px;
-    margin-right: auto;
+    height: 80px; /* Ajuste a altura conforme necessário */
+    margin-left: 10px; /* Pequeno espaçamento da borda esquerda */
+    margin-right: auto; /* Empurra os links para a direita */
 }
 
 #perfil-foto {
-    height: 80px;
-    margin-left: 10px;
-    margin-right: auto;
+    height: 80px; /* Ajuste a altura conforme necessário */
+    margin-left: 10px; /* Pequeno espaçamento da borda esquerda */
+    margin-right: auto; /* Empurra os links para a direita */
     border-radius: 50%;
-    /* animacao suave */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Animação suave */
 }
 
-body > main > section.texto > img.info-imagem {
-    width: 1000px;
-    height: 500px;
-}
-
-body > main > section.texto > img.info-imagem {
-    width: 1000px;
-    height: 500px;
+#perfil-foto:hover {
+    cursor: pointer; /* Adicionar cursor para indicar que o item pode ser clicado */
+    background-color: #121C24 !important;
+    transform: scale(1.1); /* Aumenta o tamanho da imagem em 10% */
 }
 
 nav > menu > a.item-menu:hover{
@@ -103,7 +104,7 @@ nav > menu > a.item-menu:hover{
     transition-duration: 1.0s;
 }
 
-.perfil-menu a{
+.perfil-menu a {
     display: block;
     padding: 10px 20px;
     text-decoration: none;
@@ -116,7 +117,7 @@ nav > menu > a.item-menu:hover{
     background-color: #1c2735;
 }
 
-.perfil-menu a:last-child{
+.perfil-menu a:last-child {
     border-bottom: none;
 }
 
@@ -128,10 +129,11 @@ i#burguer{
     border: 0;
     height: 1px;
     background-color: white;
-    margin: 0 20px;
-    margin-bottom: 64px;
+    margin: 0 20px; /* Adicione um espaçamento horizontal se desejar */
+    margin-bottom: 64px; /*afastar os conteudos abaixo*/
     transition-duration: 1.0s;
 }
+
 
 section{
     padding-top: 10vh;
@@ -141,7 +143,7 @@ section{
     font-size: 3.5vw;
 }
 
-section > p {
+section > p{
     padding-bottom: 2em;
 }
 
@@ -150,47 +152,41 @@ section > a{
 }
 
 section.texto{
-    margin-left: 8%;
-    margin-right: 8%;
+    margin-left: 8%; /* Pequeno espaçamento da borda esquerda */
+    margin-right: 8%; /* Pequeno espaçamento da borda direito */
 }
 
 section.texto > h1 {
     text-align: center;
-    color: white !important;
 }
 
-section.texto > h2 {
-    text-align: center;
-    color: white !important;
-}
-
-section.texto > a{
+section.texto > a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
     text-align: center;
 }
 
-section.imagem{
+section.imagem {
     background-color: rgba(51, 51, 51);
     color: white;
-    box-shadow: inset 6px 13px 0px rgba(0, 0, 0, 0.473);
+    box-shadow: inset 6px 6px 13px 0px rgba(0, 0, 0, 0.473);
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
     text-align: center;
-    min-height: 50vh;
-    margin-left: 6%;
-    margin-right: 6%;
+    min-height: 50vh; /* Altura mínima para a section */
+    margin-left: 6%; /* Pequeno espaçamento da borda esquerda */
+    margin-right: 6%; /* Pequeno espaçamento da borda direito */
     border-radius: 16px;
 }
 
-section.imagem > p{
-    display: inline-block;
+section.imagem > p{ 
+    display: inline-block; /* inline-block para adequar o conteudo dentro da box com a box*/
     padding: 5px;
     background-color: rgba(0, 0, 0, 0.514);
     margin: 0%;
@@ -203,11 +199,12 @@ section#img01{
     background-image: url("../paginas/imagens/foto1.jpg");
     background-position: right center;
 }
+
 .btn {
     display: inline-block;
     margin-top: 36px;
     padding: 10px 20px;
-    background-color: #f57b02;
+    background-color: #F57B02;
     text-decoration: none;
     font-size: 1.0em;
     font-weight: bold;
@@ -220,36 +217,45 @@ section#img01{
     display: inline-block;
     margin-top: 36px;
     padding: 10px 20px;
-    background-color: #29384c;
+    background-color: #29384C;
     color: white !important;
     text-decoration: none;
     font-size: 1.2em;
     font-weight: bold;
     border-radius: 32px;
     text-align: center;
-    transition: backgorund-color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .diferente:hover {
     background-color: #1c2735;
 }
 
-.btn:hover{
-    background-color: #1c2735;
+
+
+.btn:hover {
+    background-color: #ca6500;
 }
 
-.texto > p {
+.texto > h1{
+    color: white;
+    font-size: 1.5em;
+    margin: 50px;
+}
+
+.texto > p{
     font-size: 0.8em;
     color: white;
 }
 
 section.texto > img {
-    display: inline-block;
-    margin: 10px;
-    width: 30%;
-    max-width: auto;
-    height: auto;
+    display: inline-block; 
+    margin: 10px; /* Espaçamento entre as imagens */
+    width: 30%; /* Controle do tamanho das imagens - ajuste conforme necessário */
+    max-width: 2500px; /* Controle de largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
 }
+
 
 footer{
     background-color: black;

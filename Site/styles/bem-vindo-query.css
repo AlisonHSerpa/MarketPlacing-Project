@@ -1,58 +1,62 @@
 @charset "UTF-8";
 
-@media (min-width: 300px) and (max-width: 920px){
-    .item-menu {
-        display: none;
-        background-color: rgba(0, 0, 0, 0.9);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        flex-direction: column;
-        padding: 10px;
-        position: absolute;
-        top: 115px;
-        right: 100px;
-        width: 200px;
-        transition: all 0.3 ease-in-out;
-    }
+@media (min-width: 300px) and (max-width: 920px) {
 
-    #D {
-        margin: 0px;
-    }
-
-    #M{
-        margin: 50px;
-    }
-
-    #A{
-        margin: 100px;
-    }
-
-    #P{
-        margin: 150px;
-    }
-
-    .menu.show-menu {
-        display: flex;
-    }
-
-    .item-menu:hover{
-        background-color: #1c2735;
-    }
-
-    i#burguer{
-        display: block;
-        width: 45px;
-        padding: 10px;
-        cursor: pointer;
-        z-index: 1100;
-        color: rbg(255, 255, 2555);
-    }
-
-    i#burguer:hover{
-        background-color: white;
-        color: black;
-    }
+.item-menu {
+    display: none; /* Oculta o menu por padrão */
+    background-color: rgba(0, 0, 0, 0.9); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra opcional */
+    flex-direction: column; /* Exibe os itens em coluna */
+    align-items: center; /* Centraliza os itens na vertical */
+    padding: 10px; /* Adiciona padding para separar os itens */
+    position: absolute; /* Fixa o menu na tela */
+    top: 115px;
+    right: 100px;
+    width: 200px; /* Largura do menu */
+    transition: all 0.3s ease-in-out; /* Animação de transição */
 }
-/*esse eh o do descktop*/
-@media (min-width: 920px) and (max-width: 1200px){
+
+#D {
+    margin: 0px;
+}
+
+#M{
+    margin: 50px;
+}
+
+#A{
+    margin: 100px;
+}
+
+#P{
+    margin: 150px;
+}
+
+.menu.show-menu {
+    display: flex; /* Exibe o menu como flex container */
+}
+
+.item-menu:hover {
+    background-color: #1c2735;
+}
+
+/* Estilo do ícone de hambúrguer */
+i#burguer {
+    display: block;
+    width: 45px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1100; /* Garante que o ícone está acima do menu */
+    color: rgb(255, 255, 255);
+}
+
+i#burguer:hover {
+    background-color: white;
+    color: black;
+}
+}
+
+/* Desktops */
+@media (min-width: 920px) and (max-width: 1200px) {
 
 }
