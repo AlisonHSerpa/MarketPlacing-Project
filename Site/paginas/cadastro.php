@@ -22,7 +22,8 @@
 
     <main>
 
-        <form action="processa_cadastro.php" method="post" class="formulario">
+        <!-- aqui, ele deve chamar processa-cadastro -->
+        <form action="processa-cadastro.php" method="post" class="formulario">
             <div class="campo">
                 <label for="nome">Nome de Usuário:</label>
                 <input type="text" id="nome" name="nome" required>
