@@ -60,7 +60,56 @@ if (isset($_POST['desbanir'])) {
     $queryBanido = "SELECT * FROM banidos WHERE id = $id";
     $resultBanido = $mysqli->query($queryBanido);
     $banido = $resultBanido->fetch_assoc();
+
+    // Desbanir o usuário ou profissional, inserindo-o de volta na tabela correta
+    if ($cargo === 'usuario') {
+        $queryInsert = "INSERT INTO usuarios (id, nome_usuario, email, cpf, telefone) 
+                        VALUES ('{$banido['id']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}', NULL)";
+        $mysqli->query($queryInsert);
+    } else if ($cargo === 'profissional') {
+        $queryInsert = "INSERT INTO profissionais (id_profissional, nome, email, cpf) 
+                        VALUES ('{$banido['id']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}')";
+        $mysqli->query($queryInsert);
+    }
+
+    // Remover da tabela de banidos
+    $deleteBanido = "DELETE FROM banidos WHERE id = $id";
+    $mysqli->query($deleteBanido);
 }
+
+// Função para atualizar usuários ou profissionais
+if (isset($_POST['atualizar'])) {
+    $id = $_POST['id'] ?? null;
+    $tabela = $_POST['tabela'];
+    $nome = $_POST['nome'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
+
+    if ($tabela === 'usuarios' && $id) {
+        $query = "UPDATE usuarios SET nome_usuario = '$nome', email = '$email', telefone = '$telefone' WHERE id = $id";
+        $mysqli->query($query);
+    } else if ($tabela === 'profissionais') {
+        $id_profissional = $_POST['id_profissional'] ?? null;
+        $crp_crm = $_POST['crp_crm'];
+        $atendimento = $_POST['atendimento'];
+        $clinica = $_POST['clinica'];
+
+        if ($id_profissional) {
+            // Verifica se é CRP ou CRM
+            $crp = (strpos($crp_crm, 'CRP') !== false) ? $crp_crm : null;
+            $crm = (strpos($crp_crm, 'CRM') !== false) ? $crp_crm : null;
+
+            $query = "UPDATE profissionais SET nome = '$nome', email = '$email', telefone = '$telefone', 
+                      crp = " . ($crp ? "'$crp'" : "NULL") . ", 
+                      crm = " . ($crm ? "'$crm'" : "NULL") . ", 
+                      atendimento = '$atendimento', clinica = '$clinica' 
+                      WHERE id_profissional = $id_profissional";
+            $mysqli->query($query);
+        }
+    }
+}
+list($resultUsuarios, $resultProfissionais) = buscarUsuariosProfissionais($mysqli);
+$resultBanidos = buscarBanidos($mysqli);
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
