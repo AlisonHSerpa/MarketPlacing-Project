@@ -1,6 +1,6 @@
 <?php
-include'conexao.php';
-include 'protect.php'; // Inclui o script de proteção para verificar se o usuário está logado
+include('conexao.php');
+include ('protect.php'); // Inclui o script de proteção para verificar se o usuário está logado
 
 // ID do usuário obtido da sessão
 $user_id = $_SESSION['id']; // Obtém o ID do usuário logado

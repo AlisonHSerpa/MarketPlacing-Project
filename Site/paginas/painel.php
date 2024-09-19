@@ -55,7 +55,7 @@ if(isset($_SESSION['id'])) {
     <hr class="divisor" />
 
     <!-- Link para deslogar da sua conta -->
-    <p class="btn"><a href="">Logout</a></p>
+    <p class="btn"><a href="logout.php">Logout</a></p>
 
     <!-- Tag main, que vai guardar as próximas seções  -->
     <main>
