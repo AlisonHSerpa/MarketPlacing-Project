@@ -1,5 +1,5 @@
 <?php
-include 'conexao.php';
+include('conexao.php');
 
 // Função para buscar todos os usuários e profissionais
 function buscarUsuariosProfissionais($mysqli) {
@@ -12,11 +12,13 @@ function buscarUsuariosProfissionais($mysqli) {
     return [$resultUsuarios, $resultProfissionais];
 }
 
+// Função para buscar todos os banidos
 function buscarBanidos($mysqli) {
     $queryBanidos = "SELECT id, nome, email, cpf, cargo FROM banidos";
     return $mysqli->query($queryBanidos);
 }
 
+// Função para excluir usuários ou profissionais
 if (isset($_POST['excluir'])) {
     $id = $_POST['id'] ?? null;
     $tabela = $_POST['tabela'];
@@ -52,6 +54,7 @@ if (isset($_POST['banir'])) {
     }
 }
 
+// Função para desbanir
 if (isset($_POST['desbanir'])) {
     $id = $_POST['id'];
     $cargo = $_POST['cargo'];
@@ -247,7 +250,6 @@ $resultBanidos = buscarBanidos($mysqli);
             <?php endwhile; ?>
         </table>
     </section>
-
 </body>
 
 </html>
