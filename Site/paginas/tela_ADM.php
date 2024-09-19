@@ -166,6 +166,86 @@ $resultBanidos = buscarBanidos($mysqli);
 
     <section>
         <h2>Profissionais</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CRP/CRM</th>
+                <th>Atendimento</th>
+                <th>Telefone</th>
+                <th>Clínica</th>
+                <th>Ações</th>
+            </tr>
+            <?php while ($profissional = $resultProfissionais->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $profissional['id_profissional']; ?></td>
+                <td><?php echo $profissional['nome']; ?></td>
+                <td><?php echo $profissional['email']; ?></td>
+                <td><?php echo $profissional['crp'] ? $profissional['crp'] : $profissional['crm']; ?></td>
+                <td><?php echo $profissional['atendimento']; ?></td>
+                <td><?php echo $profissional['telefone']; ?></td>
+                <td><?php echo $profissional['clinica']; ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="id_profissional"
+                            value="<?php echo $profissional['id_profissional']; ?>">
+                        <input type="hidden" name="tabela" value="profissionais">
+                        <button type="submit" name="excluir">Excluir</button>
+                        <button type="submit" name="banir">Banir</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="id_profissional"
+                            value="<?php echo $profissional['id_profissional']; ?>">
+                        <input type="hidden" name="tabela" value="profissionais">
+                        <input type="text" name="nome" value="<?php echo $profissional['nome']; ?>" placeholder="Nome">
+                        <input type="email" name="email" value="<?php echo $profissional['email']; ?>"
+                            placeholder="Email">
+                        <input type="text" name="telefone" value="<?php echo $profissional['telefone']; ?>"
+                            placeholder="Telefone">
+                        <input type="text" name="crp_crm"
+                            value="<?php echo $profissional['crp'] ? 'CRP: '.$profissional['crp'] : 'CRM: '.$profissional['crm']; ?>"
+                            placeholder="CRP/CRM">
+                        <input type="text" name="atendimento" value="<?php echo $profissional['atendimento']; ?>"
+                            placeholder="Atendimento">
+                        <input type="text" name="clinica" value="<?php echo $profissional['clinica']; ?>"
+                            placeholder="Clínica">
+                        <button type="submit" name="atualizar">Atualizar</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+    </section>
+
+    <section>
+        <h2>Banidos</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Cargo</th>
+                <th>Ações</th>
+            </tr>
+            <?php while ($banido = $resultBanidos->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $banido['id']; ?></td>
+                <td><?php echo $banido['nome']; ?></td>
+                <td><?php echo $banido['email']; ?></td>
+                <td><?php echo $banido['cpf']; ?></td>
+                <td><?php echo $banido['cargo']; ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?php echo $banido['id']; ?>">
+                        <input type="hidden" name="cargo" value="<?php echo $banido['cargo']; ?>">
+                        <button type="submit" name="desbanir">Desbanir</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
     </section>
 
 </body>
