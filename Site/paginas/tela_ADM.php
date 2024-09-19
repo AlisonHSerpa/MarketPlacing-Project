@@ -117,10 +117,56 @@ $resultBanidos = buscarBanidos($mysqli);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Painel de Administração</title>
 </head>
 
 <body>
+    <h1>Painel de Administração</h1>
+
+    <section>
+        <h2>Usuários</h2>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Ações</th>
+            </tr>
+            <?php while ($usuario = $resultUsuarios->fetch_assoc()): ?>
+            <tr>
+                <td><?php echo $usuario['id']; ?></td>
+                <td><?php echo $usuario['nome_usuario']; ?></td>
+                <td><?php echo $usuario['email']; ?></td>
+                <td><?php echo $usuario['cpf']; ?></td>
+                <td><?php echo $usuario['telefone']; ?></td>
+                <td>
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                        <input type="hidden" name="tabela" value="usuarios">
+                        <button type="submit" name="excluir">Excluir</button>
+                        <button type="submit" name="banir">Banir</button>
+                    </form>
+                    <form method="POST">
+                        <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
+                        <input type="hidden" name="tabela" value="usuarios">
+                        <input type="text" name="nome" value="<?php echo $usuario['nome_usuario']; ?>"
+                            placeholder="Nome">
+                        <input type="email" name="email" value="<?php echo $usuario['email']; ?>" placeholder="Email">
+                        <input type="text" name="telefone" value="<?php echo $usuario['telefone']; ?>"
+                            placeholder="Telefone">
+                        <button type="submit" name="atualizar">Atualizar</button>
+                    </form>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </table>
+    </section>
+
+    <section>
+        <h2>Profissionais</h2>
+    </section>
 
 </body>
 
