@@ -1,11 +1,11 @@
 <?php
 include('conexao.php');
-include ('protect.php'); // Inclui o script de proteção para verificar se o usuário está logado
+include('protect.php'); // Inclui o script de proteção para verificar se o usuário está logado
 
 // ID do usuário obtido da sessão
 $user_id = $_SESSION['id']; // Obtém o ID do usuário logado
 
-// Buscando o nome do usuário na tabela 'usuários'
+// Buscando o nome do usuário na tabela `usuarios`
 $stmt = $mysqli->prepare("SELECT nome_usuario FROM usuarios WHERE id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -38,16 +38,16 @@ if ($stmt->num_rows > 0) {
         $query .= "resposta$i = ?, ";
     }
     $query = rtrim($query, ", ") . " WHERE user_id = ?";
-    $stmt = $mysqqli->prepare($query);
+    $stmt = $mysqli->prepare($query);
 
     // Combina as respostas e o user_id em um único array
     $parametros = array_merge($respostas, [$user_id]);
 
     // Converte os valores de $parametros em uma lista de referências para bind_param
     $stmt->bind_param(str_repeat("i", 18) . "i", ...$parametros);
-
+    
     if ($stmt->execute()) {
-        // Redireciona para peinel.php após atualizar as respostas
+        // Redireciona para painel.php após atualizar as respostas
         header("Location: painel.php");
         exit();
     } else {
@@ -57,7 +57,6 @@ if ($stmt->num_rows > 0) {
     // Se o usuário não tiver uma linha, insira novas respostas
     $stmt->close();
     $query = "INSERT INTO respostas_questionario (user_id, nome_usuario, " . implode(", ", array_map(fn($i) => "resposta$i", range(1, 18))) . ") VALUES (?, ?, " . str_repeat("?, ", 17) . "?)";
-
     $stmt = $mysqli->prepare($query);
 
     // Combina user_id, nome_usuario e as respostas em um único array
@@ -65,7 +64,7 @@ if ($stmt->num_rows > 0) {
 
     // Converte os valores de $parametros em uma lista de referências para bind_param
     $stmt->bind_param("is" . str_repeat("i", 18), ...$parametros);
-
+    
     if ($stmt->execute()) {
         // Redireciona para painel.php após inserir as respostas
         header("Location: painel.php");
@@ -77,3 +76,4 @@ if ($stmt->num_rows > 0) {
 
 $stmt->close();
 $mysqli->close();
+?>
