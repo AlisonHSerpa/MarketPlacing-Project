@@ -35,6 +35,13 @@ header > h1 {
     width: 100%;
 }
 
+#partes {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 nav menu {
     margin: 3px;
 }
@@ -60,7 +67,7 @@ nav > menu > p {
 }
 
 .logo {
-    height: 80px; /* Ajuste a altura conforme o necessário */
+    height: 80px; /* Ajuste a altura conforme necessário */
     margin-left: 10px; /* Pequeno espaçamento da borda esquerda */
     margin-right: auto; /* Empurra os links para a direita */
 }
@@ -99,7 +106,7 @@ main {
 
 .campo {
     margin-bottom: 15px; /* Espaçamento entre os campos */
-    width: 100%; /* Garante que os campos ocupem toda a largura disponível */ 
+    width: 100%; /* Garante que os campos ocupem toda a largura disponível */
 }
 
 .campo label {

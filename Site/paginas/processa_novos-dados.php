@@ -1,62 +1,49 @@
 <?php
-session_start();
 include('conexao.php');
 
-if (isset($_SESSION['id'])) {
-    $userId = $_SESSION['id'];
+if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['senha']) && isset($_POST['cpf']) && isset($_POST['telefone'])) {
 
-    // Inicia a query de atualização
-    $sql_code = "UPDATE usuarios SET ";
-    $updates = [];
+    $nome = $mysqli->real_escape_string($_POST['nome']);
+    $email = $mysqli->real_escape_string($_POST['email']);
+    $senha = password_hash($mysqli->real_escape_string($_POST['senha']), PASSWORD_DEFAULT); // Hash da senha
+    $cpf = $mysqli->real_escape_string($_POST['cpf']);
+    $telefone = $mysqli->real_escape_string($_POST['telefone']);
+    $tipo_cadastro = $_POST['tipo_cadastro'];
 
-    // Adiciona os campos à query de atualização se eles foram preenchidos
-    if (!empty($_POST['nome'])) {
-        $nome = $mysqli->real_escape_string($_POST['nome']);
-        $updates[] = "nome_usuario = '$nome'";
-    }
-    
-    if (!empty($_POST['email'])) {
-        $email = $mysqli->real_escape_string($_POST['email']);
-        
-        // Verifica se o email pertence a outro usuário
-        $sql_verifica = "SELECT * FROM usuarios WHERE email = '$email' AND id != '$userId'";
-        $sql_query = $mysqli->query($sql_verifica);
+    // Verifica se o email ou CPF já estão cadastrados
+    $sql_verifica = "SELECT * FROM usuarios WHERE email = '$email' OR cpf = '$cpf'";
+    $sql_query = $mysqli->query($sql_verifica);
 
-        if ($sql_query->num_rows > 0) {
-            echo "Email já cadastrado por outro usuário!";
-            exit();
+    if($sql_query->num_rows > 0) {
+        echo "Email ou CPF já cadastrado!";
+    } else {
+        if ($tipo_cadastro === 'usuario') {
+            // Cadastro de usuário comum
+            $sql_code = "INSERT INTO usuarios (nome_usuario, email, senha_hash, cpf, telefone) VALUES ('$nome', '$email', '$senha', '$cpf', '$telefone')";
+            $sql_query = $mysqli->query($sql_code);
+        } elseif ($tipo_cadastro === 'profissional') {
+            // Cadastro de profissional
+            $crp_crm = $mysqli->real_escape_string($_POST['crp_crm']);
+            $atendimento = $mysqli->real_escape_string($_POST['atendimento']);
+            $clinica = isset($_POST['clinica']) ? $mysqli->real_escape_string($_POST['clinica']) : null;
+            $especialidade = isset($_POST['especialidade']) ? $mysqli->real_escape_string($_POST['especialidade']) : null;
+
+            // Insere os dados na tabela 'profissionais'
+            $sql_code = "INSERT INTO profissionais (nome, crp, crm, atendimento, clinica, especialidade, telefone, email, senha_hash, cpf)
+                         VALUES ('$nome', IF('$crp_crm' LIKE 'CRP%', '$crp_crm', NULL), IF('$crp_crm' LIKE 'CRM%', '$crp_crm', NULL), 
+                         '$atendimento', '$clinica', '$especialidade', '$telefone', '$email', '$senha', '$cpf')";
+            $sql_query = $mysqli->query($sql_code);
         }
-        
-        $updates[] = "email = '$email'";
-    }
-    
-    if (!empty($_POST['senha'])) {
-        $senha = password_hash($mysqli->real_escape_string($_POST['senha']), PASSWORD_DEFAULT);
-        $updates[] = "senha_hash = '$senha'";
-    }
-    
-    if (!empty($_POST['telefone'])) {
-        $telefone = $mysqli->real_escape_string($_POST['telefone']);
-        $updates[] = "telefone = '$telefone'";
-    }
 
-    // Verifica se há algo para atualizar
-    if (!empty($updates)) {
-        $sql_code .= implode(', ', $updates) . " WHERE id = '$userId'";
-        $sql_query = $mysqli->query($sql_code);
-
-        if ($sql_query) {
-            echo "Dados atualizados com sucesso!";
-            header("Location: painel.php"); // Redireciona para a página de perfil após a atualização
+        if($sql_query) {
+            echo "Cadastro realizado com sucesso!";
+            header("Location: login.php"); // Redireciona para a página de login após o cadastro
             exit();
         } else {
-            echo "Falha ao atualizar dados: " . $mysqli->error;
+            echo "Falha ao cadastrar usuário: " . $mysqli->error;
         }
-    } else {
-        echo "Nenhum dado para atualizar!";
     }
-
 } else {
-    echo "ID do usuário não fornecido!";
+    echo "Preencha todos os campos!";
 }
 ?>
