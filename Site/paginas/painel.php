@@ -34,7 +34,8 @@ if (isset($_SESSION['id'])) {
     header("Location: login.php"); // Redireciona para a página de login se não estiver logado
     exit();
 }
-  // Manipulação do upload de foto de perfil
+
+// Manipulação do upload de foto de perfil
 $foto_perfil = 'imagens/foto2.jpg'; // Padrão caso o usuário não tenha foto
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     $arquivo = $_FILES['foto'];
@@ -120,7 +121,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             margin-top: -100px;
             margin-left: 130px;
         }
-        </style>
+    </style>
 </head>
 <body>
     <header>
@@ -140,6 +141,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             </menu>
         </nav>
     </header>
+
     <hr class="divisor">
 
     <p class="btn"><a href="logout.php">Logout</a></p>
@@ -152,14 +154,17 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
                 <h1><?php echo htmlspecialchars($usuario['nome_usuario'] ?? $usuario['nome']); ?></h1>
                 <p><?php echo htmlspecialchars($usuario['email']); ?></p>
             </div>
-        </section>    
+        </section>
+
         <!-- Upload de foto de perfil -->
         <div id="foto-upload-container">
             <form method="post" enctype="multipart/form-data" action="">
                 <input type="file" id="foto" name="foto">
                 <button type="submit">Atualizar Foto</button>
             </form>
-        </div>  
+        </div>
+            
+
         <section id="informacoes">
             <h2>Email:</h2>
             <p><?php echo htmlspecialchars($usuario['email']); ?></p>
@@ -167,7 +172,8 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             <p><?php echo htmlspecialchars($usuario['cpf']); ?></p>
             <h2>Telefone:</h2>
             <p><?php echo htmlspecialchars($usuario['telefone']); ?></p>
-            !-- Exibe informações adicionais se o usuário for um profissional -->
+
+            <!-- Exibe informações adicionais se o usuário for um profissional -->
             <?php if ($_SESSION['tipo'] === 'profissional'): ?>
                 <h2>Atendimento:</h2>
                 <p><?php echo htmlspecialchars($usuario['atendimento']); ?></p>
@@ -175,13 +181,15 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
                 <p><?php echo htmlspecialchars($usuario['especialidade']); ?></p>
                 <h2>CRP/CRM:</h2>
                 <p><?php echo htmlspecialchars($usuario['crp'] ?? $usuario['crm']); ?></p>
-            <?php endif; ?> 
+            <?php endif; ?>
+
             <div class="senha-alterar">
                 <h2>Senha:</h2>
                 <p>********</p>
             </div>
             <button class="btn"><a href="novos-dados.php">Alterar dados</a></button>
         </section>
+
         <!-- O formulário será exibido apenas se o usuário for 'usuario' -->
         <?php if ($_SESSION['tipo'] === 'usuario'): ?>
             <section id="formulario">
