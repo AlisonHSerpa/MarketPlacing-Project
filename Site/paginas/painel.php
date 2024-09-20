@@ -202,10 +202,13 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     </main>
 
     <footer>
-        <p>Site Desenvolvido por:</p>
-        <p><a href="" target="_blank">Júlio César Alves Fernandes</a></p>
-        <p><a href="" target="_blank">Alison Henrique de Lima Serpa</a></p>
-    </footer>
+            <p>Site desenvolvivo por</p>
+            <p><a href=""target="_blank">Alison Serpa</a></p>
+            <p><a href="" target="_blank">Júlio Cesar</a></p>
+            <p><a href="" target="_blank">Lawrence Lopes</a></p>
+            <p><a href="" target="_blank">Mariana Chacon</a></p>
+            <p><a href="" target="_blank">Raquel Anjos</a></p>
+        </footer>
 
     <script src="../scripts/seu-script.js"></script>
 </body>
