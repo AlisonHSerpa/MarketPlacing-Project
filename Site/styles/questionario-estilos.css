@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos gerais para o corpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url('../paginas/imagens/stars.jpg'); /* Caminho para a imagem de fundo */
+    background-size: cover; /* Faz a imagem cobrir todo o fundo da página */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+}
+
+/* Estilo para o main */
+main {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px; /* Limite o tamanho máximo do container principal */
+    width: 100%;
+}
+
+/* Estilo para o link de "Voltar" */
+a[href="Bem-vindo.html"] {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+a[href="Bem-vindo.html"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+/* Estilo para o section */
+section {
+    margin-bottom: 20px;
+}
+
+/* Estilo para o parágrafo da pergunta */
+#question {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+/* Estilo para o container de botões */
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Estilo para os botões */
+#buttons button {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #353358;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: 2px solid #fff; /* Borda branca */
+    border-radius: 10px ;
+}
+
+#buttons button:hover {
+    background-color: #0056b3;
+    border-color: #ccc; /* Muda a cor da borda ao passar o mouse */
+}
+
+/* Estilo para o botão de enviar */
+#submit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#submit:hover {
+    background-color: #218838;
+}
+
+p{
+    color: white;
+}
+
+/* Estilo para o container das imagens */
+section.img {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+/* Estilo para a imagem da Terra */
+#terra {
+    position: fixed; 
+    bottom: 0;
+    right: 0;
+    width: 200px; /* Define o tamanho da Terra */
+    height: auto; /* Mantém a proporção da imagem */
+    animation: rotate 90s linear infinite; /* Animação de rotação mais lenta */
+}
+
+/* Estilo para a outra imagem */
+section.img img#astr {
+    width: 350px; /* Controla a largura da outra imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    animation: float 8s ease-in-out infinite; /* Aplica a animação de flutuação */
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+}
+
+/* Animação para a rotação da Terra */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animação para a flutuação */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}

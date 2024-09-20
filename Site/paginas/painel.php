@@ -36,7 +36,7 @@ if (isset($_SESSION['id'])) {
 }
 
 // Manipulação do upload de foto de perfil
-$foto_perfil = 'imagens/foto2.jpg'; // Padrão caso o usuário não tenha foto
+$foto_perfil = 'imagens/perfil.png'; // Padrão caso o usuário não tenha foto
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     $arquivo = $_FILES['foto'];
 
@@ -76,6 +76,11 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     // Se o usuário já tiver uma foto de perfil no banco, atualiza a exibição
     $foto_perfil = $usuario['foto_perfil'];
 }
+
+// Se não houver uma foto de perfil definida, usa a imagem padrão
+if (empty($foto_perfil) || !file_exists($foto_perfil)) {
+    $foto_perfil = 'imagens/perfil.png';
+}
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +94,6 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
     <link rel="stylesheet" href="../styles/bem-vindo_query.css">
     <style>
         /* Estilos personalizados para os botões menores */
-
         #foto {
             display: block;
             margin-bottom: 10px;
@@ -164,7 +168,6 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             </form>
         </div>
             
-
         <section id="informacoes">
             <h2>Email:</h2>
             <p><?php echo htmlspecialchars($usuario['email']); ?></p>
@@ -189,26 +192,13 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             </div>
             <button class="btn"><a href="novos-dados.php">Alterar dados</a></button>
         </section>
-
-        <!-- O formulário será exibido apenas se o usuário for 'usuario' -->
-        <?php if ($_SESSION['tipo'] === 'usuario'): ?>
-            <section id="formulario">
-                <p>Formulário</p>
-                <button class="btn-simbolo">
-                    <img src="imagens/símbolo.png" alt="Simbolo" width="50" height="50">
-                </button>
-            </section>
-        <?php endif; ?>
     </main>
 
     <footer>
-            <p>Site desenvolvivo por</p>
-            <p><a href=""target="_blank">Alison Serpa</a></p>
-            <p><a href="" target="_blank">Júlio Cesar</a></p>
-            <p><a href="" target="_blank">Lawrence Lopes</a></p>
-            <p><a href="" target="_blank">Mariana Chacon</a></p>
-            <p><a href="" target="_blank">Raquel Anjos</a></p>
-        </footer>
+        <p>Site Desenvolvido por:</p>
+        <p><a href="" target="_blank">Júlio César Alves Fernandes</a></p>
+        <p><a href="" target="_blank">Alison Henrique de Lima Serpa</a></p>
+    </footer>
 
     <script src="../scripts/seu-script.js"></script>
 </body>

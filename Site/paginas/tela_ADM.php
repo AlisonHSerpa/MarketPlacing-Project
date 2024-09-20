@@ -1,4 +1,14 @@
 <?php
+session_start();
+
+// Verifica se o usuário é o administrador
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    // Redireciona para a página de login se não for o administrador
+    header('Location: login.php');
+    exit();
+}
+?>
+<?php
 include('conexao.php');
 
 // Função para buscar todos os usuários e profissionais
@@ -14,7 +24,7 @@ function buscarUsuariosProfissionais($mysqli) {
 
 // Função para buscar todos os banidos
 function buscarBanidos($mysqli) {
-    $queryBanidos = "SELECT id, nome, email, cpf, cargo FROM banidos";
+    $queryBanidos = "SELECT id, id_banido, nome, email, cpf, cargo FROM banidos";
     return $mysqli->query($queryBanidos);
 }
 
@@ -32,24 +42,27 @@ if (isset($_POST['excluir'])) {
     }
 }
 
-// Função para banir usuários ou profissionais
+// Função para banir usuários (sem banir profissionais)
 if (isset($_POST['banir'])) {
     $id = $_POST['id'] ?? null;
     $tabela = $_POST['tabela'];
-    $cargo = $tabela === 'usuarios' ? 'usuário' : 'profissional';
 
-    if ($id) {
-        $query = "INSERT INTO banidos (id, nome, email, cpf, cargo) 
-                  SELECT id, nome_usuario, email, cpf, '$cargo' FROM $tabela WHERE id = $id";
-        $mysqli->query($query);
+    // Apenas permite banir usuários
+    if ($id && $tabela === 'usuarios') {
+        $cargo = 'usuario';
 
-        // Exclui o banido das tabelas originais
-        if ($tabela === 'usuarios') {
-            $deleteQuery = "DELETE FROM usuarios WHERE id = $id";
-        } else if ($tabela === 'profissionais') {
-            $deleteQuery = "DELETE FROM profissionais WHERE id_profissional = $id";
-        }
+        // Obter informações do usuário para banir
+        $query = "SELECT id, nome_usuario AS nome, email, cpf FROM usuarios WHERE id = $id";
+        $result = $mysqli->query($query);
+        $banido = $result->fetch_assoc();
 
+        // Inserir na tabela de banidos
+        $insertQuery = "INSERT INTO banidos (id_banido, nome, email, cpf, cargo) 
+                        VALUES ('{$banido['id']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}', '$cargo')";
+        $mysqli->query($insertQuery);
+
+        // Excluir o usuário da tabela original
+        $deleteQuery = "DELETE FROM usuarios WHERE id = $id";
         $mysqli->query($deleteQuery);
     }
 }
@@ -64,14 +77,13 @@ if (isset($_POST['desbanir'])) {
     $resultBanido = $mysqli->query($queryBanido);
     $banido = $resultBanido->fetch_assoc();
 
-    // Desbanir o usuário ou profissional, inserindo-o de volta na tabela correta
+    // Define um valor padrão de telefone caso seja NULL
+    $telefone = $banido['telefone'] ?? '0000-0000';
+
+    // Desbanir o usuário, inserindo-o de volta na tabela de usuários
     if ($cargo === 'usuario') {
         $queryInsert = "INSERT INTO usuarios (id, nome_usuario, email, cpf, telefone) 
-                        VALUES ('{$banido['id']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}', NULL)";
-        $mysqli->query($queryInsert);
-    } else if ($cargo === 'profissional') {
-        $queryInsert = "INSERT INTO profissionais (id_profissional, nome, email, cpf) 
-                        VALUES ('{$banido['id']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}')";
+                        VALUES ('{$banido['id_banido']}', '{$banido['nome']}', '{$banido['email']}', '{$banido['cpf']}', '$telefone')";
         $mysqli->query($queryInsert);
     }
 
@@ -111,18 +123,17 @@ if (isset($_POST['atualizar'])) {
         }
     }
 }
+
 list($resultUsuarios, $resultProfissionais) = buscarUsuariosProfissionais($mysqli);
 $resultBanidos = buscarBanidos($mysqli);
 ?>
-<!DOCTYPE html>
-<html lang="pt-BR">
 
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel de Administração</title>
 </head>
-
 <body>
     <h1>Painel de Administração</h1>
 
@@ -154,11 +165,9 @@ $resultBanidos = buscarBanidos($mysqli);
                     <form method="POST">
                         <input type="hidden" name="id" value="<?php echo $usuario['id']; ?>">
                         <input type="hidden" name="tabela" value="usuarios">
-                        <input type="text" name="nome" value="<?php echo $usuario['nome_usuario']; ?>"
-                            placeholder="Nome">
+                        <input type="text" name="nome" value="<?php echo $usuario['nome_usuario']; ?>" placeholder="Nome">
                         <input type="email" name="email" value="<?php echo $usuario['email']; ?>" placeholder="Email">
-                        <input type="text" name="telefone" value="<?php echo $usuario['telefone']; ?>"
-                            placeholder="Telefone">
+                        <input type="text" name="telefone" value="<?php echo $usuario['telefone']; ?>" placeholder="Telefone">
                         <button type="submit" name="atualizar">Atualizar</button>
                     </form>
                 </td>
@@ -185,34 +194,26 @@ $resultBanidos = buscarBanidos($mysqli);
                 <td><?php echo $profissional['id_profissional']; ?></td>
                 <td><?php echo $profissional['nome']; ?></td>
                 <td><?php echo $profissional['email']; ?></td>
-                <td><?php echo $profissional['crp'] ? $profissional['crp'] : $profissional['crm']; ?></td>
+                <td><?php echo $profissional['crp'] ?? $profissional['crm']; ?></td>
                 <td><?php echo $profissional['atendimento']; ?></td>
                 <td><?php echo $profissional['telefone']; ?></td>
                 <td><?php echo $profissional['clinica']; ?></td>
                 <td>
                     <form method="POST">
-                        <input type="hidden" name="id_profissional"
-                            value="<?php echo $profissional['id_profissional']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $profissional['id_profissional']; ?>">
                         <input type="hidden" name="tabela" value="profissionais">
                         <button type="submit" name="excluir">Excluir</button>
-                        <button type="submit" name="banir">Banir</button>
+                        <!-- Removido o botão de banir profissionais -->
                     </form>
                     <form method="POST">
-                        <input type="hidden" name="id_profissional"
-                            value="<?php echo $profissional['id_profissional']; ?>">
+                        <input type="hidden" name="id_profissional" value="<?php echo $profissional['id_profissional']; ?>">
                         <input type="hidden" name="tabela" value="profissionais">
                         <input type="text" name="nome" value="<?php echo $profissional['nome']; ?>" placeholder="Nome">
-                        <input type="email" name="email" value="<?php echo $profissional['email']; ?>"
-                            placeholder="Email">
-                        <input type="text" name="telefone" value="<?php echo $profissional['telefone']; ?>"
-                            placeholder="Telefone">
-                        <input type="text" name="crp_crm"
-                            value="<?php echo $profissional['crp'] ? 'CRP: '.$profissional['crp'] : 'CRM: '.$profissional['crm']; ?>"
-                            placeholder="CRP/CRM">
-                        <input type="text" name="atendimento" value="<?php echo $profissional['atendimento']; ?>"
-                            placeholder="Atendimento">
-                        <input type="text" name="clinica" value="<?php echo $profissional['clinica']; ?>"
-                            placeholder="Clínica">
+                        <input type="email" name="email" value="<?php echo $profissional['email']; ?>" placeholder="Email">
+                        <input type="text" name="crp_crm" value="<?php echo $profissional['crp'] ?? $profissional['crm']; ?>" placeholder="CRP/CRM">
+                        <input type="text" name="atendimento" value="<?php echo $profissional['atendimento']; ?>" placeholder="Atendimento">
+                        <input type="text" name="telefone" value="<?php echo $profissional['telefone']; ?>" placeholder="Telefone">
+                        <input type="text" name="clinica" value="<?php echo $profissional['clinica']; ?>" placeholder="Clínica">
                         <button type="submit" name="atualizar">Atualizar</button>
                     </form>
                 </td>
@@ -234,7 +235,7 @@ $resultBanidos = buscarBanidos($mysqli);
             </tr>
             <?php while ($banido = $resultBanidos->fetch_assoc()): ?>
             <tr>
-                <td><?php echo $banido['id']; ?></td>
+                <td><?php echo $banido['id_banido']; ?></td>
                 <td><?php echo $banido['nome']; ?></td>
                 <td><?php echo $banido['email']; ?></td>
                 <td><?php echo $banido['cpf']; ?></td>
@@ -251,5 +252,4 @@ $resultBanidos = buscarBanidos($mysqli);
         </table>
     </section>
 </body>
-
 </html>

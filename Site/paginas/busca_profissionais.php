@@ -1,8 +1,7 @@
 <?php
+include('conexao.php');
 
-include'conexao.php';
-
-header("Content-Type: application/json");
+header('Content-Type: application/json');
 
 // Obtenção dos parâmetros da requisição
 $profissao = $_GET['profissao'] ?? '';
@@ -11,20 +10,22 @@ $offset = (int) ($_GET['offset'] ?? 0);
 $limit = (int) ($_GET['limit'] ?? 10);
 
 // Construção da condição da consulta SQL
-$condition = "WHERE 1=11";
+$condition = "WHERE 1=1";
 if ($profissao === 'Psicólogo') {
     $condition .= " AND crp IS NOT NULL";
-} elseif ($profissao === 'Psicólogo') {
-    $condition .= " AND crp IS NOT NULL";
+} elseif ($profissao === 'Psiquiatra') {
+    $condition .= " AND crm IS NOT NULL";
 }
-
 if (!empty($nome)) {
     $condition .= " AND nome LIKE ?";
     $nome = "%$nome%";
 }
 
 // Preparação da consulta SQL
-$query = "SELECT nome, crp, crm, atendimento, clinica, especialidade, telefone FROM profissionais $condition LIMIT ? OFFSET ?";
+$query = "SELECT nome, crp, crm, atendimento, clinica, especialidade, telefone 
+          FROM profissionais 
+          $condition
+          LIMIT ? OFFSET ?";
 
 if ($stmt = $mysqli->prepare($query)) {
     if (!empty($nome)) {
@@ -47,8 +48,8 @@ if ($stmt = $mysqli->prepare($query)) {
 
     $stmt->close();
 } else {
-    echo json_encode(['error' => 'Erro na preparação da consulta 
-    SQL.']);
+    echo json_encode(['error' => 'Erro na preparação da consulta SQL.']);
 }
 
 $mysqli->close();
+?>
