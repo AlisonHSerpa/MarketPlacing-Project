@@ -55,8 +55,13 @@
             <!-- Campos para profissionais (escondidos por padrão) -->
             <div id="profissional-campos" style="display: none;">
                 <div class="campo">
-                    <label for="crp_crm">CRP ou CRM:</label>
-                    <input type="text" id="crp_crm" name="crp_crm" placeholder="Informe CRP ou CRM">
+                    <label>Escolha o tipo de registro:</label>
+                    <label><input type="radio" name="tipo_registro" value="CRP" checked> CRP</label>
+                    <label><input type="radio" name="tipo_registro" value="CRM"> CRM</label>
+                </div>
+                <div class="campo">
+                    <label for="numero_registro">Número CRP ou CRM:</label>
+                    <input type="text" id="numero_registro" name="numero_registro" placeholder="Informe o número do CRP ou CRM">
                 </div>
                 <div class="campo">
                     <label for="atendimento">Atendimento:</label>
